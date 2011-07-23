@@ -7,7 +7,7 @@
 //
 
 #import "WeatherTableViewCell.h"
-#define kImageViewTag 100001
+#define kTempLabelTag 100001
 #define kInfoLabelTag 100002
 #define ktemperatureImageViewTag 100004
 #define kStatisticsLabelTag 100003
@@ -40,7 +40,7 @@
         UILabel* tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(33, 28, 100, 16)];
         tempLabel.backgroundColor = [UIColor clearColor];
         tempLabel.textAlignment = UITextAlignmentCenter;
-        tempLabel.tag = kInfoLabelTag;
+        tempLabel.tag = kTempLabelTag;
         tempLabel.font = [UIFont systemFontOfSize:13];
         tempLabel.lineBreakMode = UILineBreakModeWordWrap;
         tempLabel.adjustsFontSizeToFitWidth = YES;
@@ -96,7 +96,7 @@
     [super dealloc];
 }
 
-- (void) setWeatherInfo:(NSString*)weather statisticsInfo:(NSString*)statistics sourceImage:(UIImage*)image
+- (void) setWeatherInfo:(NSString*)weather tempInfo:(NSString*)tempInfo statisticsInfo:(NSString*)statistics sourceImage:(UIImage*)image
 {
     UIImageView* iv = (UIImageView*)[self.contentView viewWithTag: ktemperatureImageViewTag];
     iv.image = image;
@@ -106,6 +106,9 @@
     
     UILabel* statisticsLabel = (UILabel*)[self.contentView viewWithTag:kStatisticsLabelTag];
     statisticsLabel.text = statistics;
+    
+    UILabel* templabel = (UILabel*)[self.contentView viewWithTag:kTempLabelTag];
+    templabel.text = tempInfo;
 }
 
 - (void) accurateBtnPressed:(id)sender

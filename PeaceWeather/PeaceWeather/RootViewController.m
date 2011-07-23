@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 
+
 typedef enum _WeatherSource
 {
     WeatherSourceGoogle,
@@ -19,6 +20,10 @@ typedef enum _WeatherSource
 {
     [super viewDidLoad];
     self.title = @"PeaceWeather";
+    WeatherInfoFetcher* fetcher = [[WeatherInfoFetcher alloc] init];
+    fetcher.delegate = self;
+    [fetcher getWeatherInfo];
+    weatherDict = [[NSMutableDictionary alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,20 +77,68 @@ typedef enum _WeatherSource
     }
     if(indexPath.row == WeatherSourceGoogle)
     {
+        NSDictionary* dict = [weatherDict valueForKey:@"google"];//[weatherDict setValue:dict forKey:@"google"];
+        NSString* weatherInfo = nil;
+        NSString* tempInfo = nil;
+        if(dict==nil)
+        {
+            weatherInfo = @"正在获取";
+            tempInfo = @"";
+        }
+        else
+        {
+            weatherInfo = [dict valueForKey:@"condition"];
+            NSString* lowTemp = [dict valueForKey:@"lowTemp"];
+            NSString* highTemp = [dict valueForKey:@"highTemp"];
+            if([lowTemp length]>0&&[highTemp length]>0)
+            {
+                tempInfo = [NSString stringWithFormat:@"%@℃-%@℃",lowTemp,highTemp];
+            }
+            else
+            {
+                tempInfo = @"";
+            }
+            
+        }
+//        NSLog(@"google dict:%@",dict);
         NSUInteger totalcount= [[NSUserDefaults standardUserDefaults] integerForKey:@"count"];
         NSUInteger googleCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"googlecount"];
         NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"google.png" ofType:nil];
         UIImage* googleImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
-        [cell setWeatherInfo:@"晴转多云" statisticsInfo:[NSString stringWithFormat:@"%d/%d",googleCount,totalcount] sourceImage:googleImage];
+        [cell setWeatherInfo:weatherInfo tempInfo:tempInfo statisticsInfo:[NSString stringWithFormat:@"%d/%d",googleCount,totalcount] sourceImage:googleImage];
         [googleImage release];
     }
     else if(indexPath.row == WeatherSourceYahoo)
     {
+        NSDictionary* dict = [weatherDict valueForKey:@"yahoo"];
+        NSString* weatherInfo = nil;
+        NSString* tempInfo = nil;
+        if(dict==nil)
+        {
+            weatherInfo = @"正在获取";
+            tempInfo = @"";
+        }
+        else
+        {
+            weatherInfo = [dict valueForKey:@"condition"];
+            NSString* lowTemp = [dict valueForKey:@"lowTemp"];
+            NSString* highTemp = [dict valueForKey:@"highTemp"];
+            if([lowTemp length]>0&&[highTemp length]>0)
+            {
+                tempInfo = [NSString stringWithFormat:@"%@℃-%@℃",lowTemp,highTemp];
+            }
+            else
+            {
+                tempInfo = @"";
+            }
+        }
+        
+//        NSLog(@"yahoo dict:%@",dict);
         NSUInteger totalcount= [[NSUserDefaults standardUserDefaults] integerForKey:@"count"];
         NSUInteger yahooCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"yahooCount"];
         NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"yahoo.png" ofType:nil];
         UIImage* yahooImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
-        [cell setWeatherInfo:@"晴转多云" statisticsInfo:[NSString stringWithFormat:@"%d/%d",yahooCount,totalcount] sourceImage:yahooImage];
+        [cell setWeatherInfo:weatherInfo tempInfo:tempInfo statisticsInfo:[NSString stringWithFormat:@"%d/%d",yahooCount,totalcount] sourceImage:yahooImage];
         [yahooImage release];
     }
     return cell;
@@ -161,6 +214,7 @@ typedef enum _WeatherSource
 
 - (void)dealloc
 {
+    [weatherDict release];
     [super dealloc];
 }
 
@@ -200,6 +254,48 @@ typedef enum _WeatherSource
     {
           NSLog(@"unaccurate yahoo");
     }
+}
+
+
+#pragma mark-
+#pragma mark--- WeatherInfoFetcherProtocol Methods---
+- (void) weatherFetchedSuccess:(NSDictionary*)dict
+{
+    NSNumber* stepNum = [dict valueForKey:@"step"];
+    WeatherFetchStep step = [stepNum intValue];
+    NSDictionary* tempDict = [NSDictionary dictionaryWithDictionary:dict];
+    if(step == WeatherFetchStepGoogle)
+    {
+        [weatherDict setValue:tempDict forKey:@"google"];
+    }
+    else if(step == WeatherFetchStepYahoo)
+    {
+        [weatherDict setValue:tempDict forKey:@"yahoo"];
+    }
+    [self.tableView reloadData];
+}
+
+- (void) weatherFetchedFailed:(NSDictionary*)dict
+{
+    NSNumber* stepNum = [dict valueForKey:@"step"];
+    WeatherFetchStep step = [stepNum intValue];
+    NSString* msg = nil;
+    
+    NSDictionary* tempDict = [NSDictionary dictionaryWithDictionary:dict];
+    if(step == WeatherFetchStepGoogle)
+    {
+        msg = @"Something seems wrong when fetch google weather infomation!";
+        [weatherDict setValue:tempDict forKey:@"google"];
+    }
+    else if(step == WeatherFetchStepYahoo)
+    {
+        msg = @"Something seems wrong when fetch yahoo weather infomation!";
+        [weatherDict setValue:tempDict forKey:@"yahoo"];
+    }
+    [self.tableView reloadData];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Exception occur" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    [alert release];
 }
 
 @end

@@ -14,7 +14,7 @@
 }
 @property (nonatomic,assign) id <WeatherEstimateProtocol> delegate;
 
-- (void) setWeatherInfo:(NSString*)weather statisticsInfo:(NSString*)statistics sourceImage:(UIImage*)image;
+- (void) setWeatherInfo:(NSString*)weather tempInfo:(NSString*)tempInfo statisticsInfo:(NSString*)statistics sourceImage:(UIImage*)image;
 
 - (void) accurateBtnPressed:(id)sender;
 - (void) unaccurateBtnPressed:(id)sender;

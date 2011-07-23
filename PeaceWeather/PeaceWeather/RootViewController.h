@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WeatherTableViewCell.h"
+#import "WeatherInfoFetcher.h"
 
-@interface RootViewController : UITableViewController <WeatherEstimateProtocol>{
-
+@interface RootViewController : UITableViewController <WeatherEstimateProtocol,WeatherInfoFetcherProtocol>{
+    NSMutableDictionary* weatherDict;
 }
 
 

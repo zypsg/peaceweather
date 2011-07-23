@@ -19,6 +19,8 @@
 		C307E37B13DA603F00C840D2 /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E37A13DA603F00C840D2 /* WeatherTableViewCell.m */; };
 		C307E37F13DA70A100C840D2 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = C307E37D13DA70A100C840D2 /* google.png */; };
 		C307E38013DA70A100C840D2 /* yahoo.png in Resources */ = {isa = PBXBuildFile; fileRef = C307E37E13DA70A100C840D2 /* yahoo.png */; };
+		C307E38613DA7CDD00C840D2 /* PeaceHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E38513DA7CDD00C840D2 /* PeaceHttpTool.m */; };
+		C307E38913DA962000C840D2 /* WeatherInfoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		C307E37A13DA603F00C840D2 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 		C307E37D13DA70A100C840D2 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
 		C307E37E13DA70A100C840D2 /* yahoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yahoo.png; sourceTree = "<group>"; };
+		C307E38413DA7CDD00C840D2 /* PeaceHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeaceHttpTool.h; sourceTree = "<group>"; };
+		C307E38513DA7CDD00C840D2 /* PeaceHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeaceHttpTool.m; sourceTree = "<group>"; };
+		C307E38713DA962000C840D2 /* WeatherInfoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherInfoFetcher.h; sourceTree = "<group>"; };
+		C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherInfoFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,8 @@
 		C307E35F13DA5D5F00C840D2 /* PeaceWeather */ = {
 			isa = PBXGroup;
 			children = (
+				C307E38313DA7CC400C840D2 /* http */,
+				C307E38213DA7B3E00C840D2 /* weather */,
 				C307E36813DA5D5F00C840D2 /* PeaceWeatherAppDelegate.h */,
 				C307E36913DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m */,
 				C307E36B13DA5D5F00C840D2 /* MainWindow.xib */,
@@ -118,6 +126,24 @@
 				C307E37E13DA70A100C840D2 /* yahoo.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		C307E38213DA7B3E00C840D2 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				C307E38713DA962000C840D2 /* WeatherInfoFetcher.h */,
+				C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		C307E38313DA7CC400C840D2 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				C307E38413DA7CDD00C840D2 /* PeaceHttpTool.h */,
+				C307E38513DA7CDD00C840D2 /* PeaceHttpTool.m */,
+			);
+			path = http;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +212,8 @@
 				C307E36A13DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m in Sources */,
 				C307E37013DA5D5F00C840D2 /* RootViewController.m in Sources */,
 				C307E37B13DA603F00C840D2 /* WeatherTableViewCell.m in Sources */,
+				C307E38613DA7CDD00C840D2 /* PeaceHttpTool.m in Sources */,
+				C307E38913DA962000C840D2 /* WeatherInfoFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
