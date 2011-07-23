@@ -16,6 +16,9 @@
 		C307E36D13DA5D5F00C840D2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C307E36B13DA5D5F00C840D2 /* MainWindow.xib */; };
 		C307E37013DA5D5F00C840D2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E36F13DA5D5F00C840D2 /* RootViewController.m */; };
 		C307E37313DA5D5F00C840D2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C307E37113DA5D5F00C840D2 /* RootViewController.xib */; };
+		C307E37B13DA603F00C840D2 /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E37A13DA603F00C840D2 /* WeatherTableViewCell.m */; };
+		C307E37F13DA70A100C840D2 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = C307E37D13DA70A100C840D2 /* google.png */; };
+		C307E38013DA70A100C840D2 /* yahoo.png in Resources */ = {isa = PBXBuildFile; fileRef = C307E37E13DA70A100C840D2 /* yahoo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,10 @@
 		C307E36E13DA5D5F00C840D2 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C307E36F13DA5D5F00C840D2 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C307E37213DA5D5F00C840D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		C307E37913DA603F00C840D2 /* WeatherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
+		C307E37A13DA603F00C840D2 /* WeatherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
+		C307E37D13DA70A100C840D2 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google.png; sourceTree = "<group>"; };
+		C307E37E13DA70A100C840D2 /* yahoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yahoo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,8 @@
 				C307E36F13DA5D5F00C840D2 /* RootViewController.m */,
 				C307E37113DA5D5F00C840D2 /* RootViewController.xib */,
 				C307E36013DA5D5F00C840D2 /* Supporting Files */,
+				C307E37913DA603F00C840D2 /* WeatherTableViewCell.h */,
+				C307E37A13DA603F00C840D2 /* WeatherTableViewCell.m */,
 			);
 			path = PeaceWeather;
 			sourceTree = "<group>";
@@ -93,12 +102,22 @@
 		C307E36013DA5D5F00C840D2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C307E37C13DA70A100C840D2 /* images */,
 				C307E36113DA5D5F00C840D2 /* PeaceWeather-Info.plist */,
 				C307E36213DA5D5F00C840D2 /* InfoPlist.strings */,
 				C307E36513DA5D5F00C840D2 /* PeaceWeather-Prefix.pch */,
 				C307E36613DA5D5F00C840D2 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C307E37C13DA70A100C840D2 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C307E37D13DA70A100C840D2 /* google.png */,
+				C307E37E13DA70A100C840D2 /* yahoo.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +170,8 @@
 				C307E36413DA5D5F00C840D2 /* InfoPlist.strings in Resources */,
 				C307E36D13DA5D5F00C840D2 /* MainWindow.xib in Resources */,
 				C307E37313DA5D5F00C840D2 /* RootViewController.xib in Resources */,
+				C307E37F13DA70A100C840D2 /* google.png in Resources */,
+				C307E38013DA70A100C840D2 /* yahoo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +185,7 @@
 				C307E36713DA5D5F00C840D2 /* main.m in Sources */,
 				C307E36A13DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m in Sources */,
 				C307E37013DA5D5F00C840D2 /* RootViewController.m in Sources */,
+				C307E37B13DA603F00C840D2 /* WeatherTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +260,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PeaceWeather/PeaceWeather-Prefix.pch";
 				INFOPLIST_FILE = "PeaceWeather/PeaceWeather-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -251,6 +274,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PeaceWeather/PeaceWeather-Prefix.pch";
 				INFOPLIST_FILE = "PeaceWeather/PeaceWeather-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

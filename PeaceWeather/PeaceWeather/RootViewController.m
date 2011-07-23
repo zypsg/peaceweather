@@ -7,12 +7,14 @@
 //
 
 #import "RootViewController.h"
+#import "WeatherTableViewCell.h"
 
 @implementation RootViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"PeaceWeather";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,7 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 2;
 }
 
 // Customize the appearance of table view cells.
@@ -59,12 +61,24 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    WeatherTableViewCell *cell = (WeatherTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[WeatherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-
-    // Configure the cell.
+    if(indexPath.row == 0)
+    {
+        NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"google.png" ofType:nil];
+        UIImage* googleImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
+        [cell setWeatherInfo:@"晴转多云" statisticsInfo:@"8-10" sourceImage:googleImage];
+        [googleImage release];
+    }
+    else if(indexPath.row == 1)
+    {
+        NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"yahoo.png" ofType:nil];
+        UIImage* yahooImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
+        [cell setWeatherInfo:@"晴转多云" statisticsInfo:@"8-10" sourceImage:yahooImage];
+        [yahooImage release];
+    }
     return cell;
 }
 
