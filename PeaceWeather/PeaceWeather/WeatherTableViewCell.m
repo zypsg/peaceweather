@@ -13,12 +13,15 @@
 #define kStatisticsLabelTag 100003
 
 @implementation WeatherTableViewCell
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(2, 7, 30, 30)];
         iv.tag = ktemperatureImageViewTag; 
         [self.contentView addSubview:iv];
@@ -49,7 +52,7 @@
         [self.contentView addSubview:lineView];
         [lineView release];
         
-        UILabel* statisticsLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineView.frame.origin.x+lineView.frame.size.width+2.5, 12, 60, 20)];
+        UILabel* statisticsLabel = [[UILabel alloc] initWithFrame:CGRectMake(lineView.frame.origin.x+lineView.frame.size.width+2.5, 12, 100, 20)];
         statisticsLabel.backgroundColor = [UIColor clearColor];
         statisticsLabel.textAlignment = UITextAlignmentCenter;
         statisticsLabel.font = [UIFont systemFontOfSize:15];
@@ -65,17 +68,17 @@
         [lineView release];
         
         UIButton* accurateBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        accurateBtn.frame = CGRectMake(lineView.frame.origin.x+lineView.frame.size.width+5, 7, 50, 30);
+        accurateBtn.frame = CGRectMake(lineView.frame.origin.x+lineView.frame.size.width+15, 7, 50, 30);
         [accurateBtn addTarget:self action:@selector(accurateBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [accurateBtn setTitle:@" right" forState:UIControlStateNormal];
         [self.contentView addSubview:accurateBtn];
         
         
-        UIButton* unaccurateBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        unaccurateBtn.frame = CGRectMake(accurateBtn.frame.origin.x+accurateBtn.frame.size.width+5, 7, 50, 30);
-        [unaccurateBtn setTitle:@"wrong" forState:UIControlStateNormal];
-        [unaccurateBtn addTarget:self action:@selector(unaccurateBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:unaccurateBtn];
+//        UIButton* unaccurateBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        unaccurateBtn.frame = CGRectMake(accurateBtn.frame.origin.x+accurateBtn.frame.size.width+5, 7, 50, 30);
+//        [unaccurateBtn setTitle:@"wrong" forState:UIControlStateNormal];
+//        [unaccurateBtn addTarget:self action:@selector(unaccurateBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.contentView addSubview:unaccurateBtn];
         
     }
     return self;
@@ -107,10 +110,16 @@
 
 - (void) accurateBtnPressed:(id)sender
 {
-    NSLog(@"accurateBtnPressed...");
+    if([delegate respondsToSelector:@selector(accurateAdded:)])
+    {
+        [delegate accurateAdded:self];
+    }
 }
 - (void) unaccurateBtnPressed:(id)sender
 {
-    NSLog(@"unaccurateBtnPressed...");
+    if([delegate respondsToSelector:@selector(unaccurateAdded:)])
+    {
+        [delegate unaccurateAdded:self];
+    }
 }
 @end

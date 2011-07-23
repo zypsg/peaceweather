@@ -7,8 +7,12 @@
 //
 
 #import "RootViewController.h"
-#import "WeatherTableViewCell.h"
 
+typedef enum _WeatherSource
+{
+    WeatherSourceGoogle,
+    WeatherSourceYahoo
+}WeatherSource;
 @implementation RootViewController
 
 - (void)viewDidLoad
@@ -64,19 +68,24 @@
     WeatherTableViewCell *cell = (WeatherTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[WeatherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.delegate = self;
     }
-    if(indexPath.row == 0)
+    if(indexPath.row == WeatherSourceGoogle)
     {
+        NSUInteger totalcount= [[NSUserDefaults standardUserDefaults] integerForKey:@"count"];
+        NSUInteger googleCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"googlecount"];
         NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"google.png" ofType:nil];
         UIImage* googleImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
-        [cell setWeatherInfo:@"晴转多云" statisticsInfo:@"8-10" sourceImage:googleImage];
+        [cell setWeatherInfo:@"晴转多云" statisticsInfo:[NSString stringWithFormat:@"%d/%d",googleCount,totalcount] sourceImage:googleImage];
         [googleImage release];
     }
-    else if(indexPath.row == 1)
+    else if(indexPath.row == WeatherSourceYahoo)
     {
+        NSUInteger totalcount= [[NSUserDefaults standardUserDefaults] integerForKey:@"count"];
+        NSUInteger yahooCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"yahooCount"];
         NSString* imageUrl = [[NSBundle mainBundle] pathForResource:@"yahoo.png" ofType:nil];
         UIImage* yahooImage = [[UIImage alloc] initWithContentsOfFile:imageUrl];
-        [cell setWeatherInfo:@"晴转多云" statisticsInfo:@"8-10" sourceImage:yahooImage];
+        [cell setWeatherInfo:@"晴转多云" statisticsInfo:[NSString stringWithFormat:@"%d/%d",yahooCount,totalcount] sourceImage:yahooImage];
         [yahooImage release];
     }
     return cell;
@@ -153,6 +162,44 @@
 - (void)dealloc
 {
     [super dealloc];
+}
+
+
+#pragma mark-
+#pragma mark---WeatherEstimateProtocol Methods ---
+- (void) accurateAdded:(WeatherTableViewCell*)cell
+{
+    NSUInteger totalcount= [[NSUserDefaults standardUserDefaults] integerForKey:@"count"];
+    totalcount++;
+    [[NSUserDefaults standardUserDefaults]  setInteger:totalcount forKey:@"count"];
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    if(indexPath.row==WeatherSourceGoogle)
+    {
+        NSLog(@"accurate google");
+        NSUInteger googleCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"googlecount"];
+        googleCount++;
+        [[NSUserDefaults standardUserDefaults] setInteger:googleCount forKey:@"googlecount"];
+    }
+    else if(indexPath.row == WeatherSourceYahoo)
+    {
+        NSLog(@"accurate yahoo");
+        NSUInteger yahooCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"yahooCount"];
+        yahooCount++;
+        [[NSUserDefaults standardUserDefaults] setInteger:yahooCount forKey:@"yahooCount"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void) unaccurateAdded:(WeatherTableViewCell*)cell
+{
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    if(indexPath.row==WeatherSourceGoogle)
+    {
+        NSLog(@"unaccurate google");
+    }
+    else if(indexPath.row == WeatherSourceYahoo)
+    {
+          NSLog(@"unaccurate yahoo");
+    }
 }
 
 @end

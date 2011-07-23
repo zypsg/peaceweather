@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-
+@protocol WeatherEstimateProtocol;   
 @interface WeatherTableViewCell : UITableViewCell {
-    
+    id <WeatherEstimateProtocol> delegate;
 }
+@property (nonatomic,assign) id <WeatherEstimateProtocol> delegate;
 
 - (void) setWeatherInfo:(NSString*)weather statisticsInfo:(NSString*)statistics sourceImage:(UIImage*)image;
 
 - (void) accurateBtnPressed:(id)sender;
 - (void) unaccurateBtnPressed:(id)sender;
+
+@end
+
+@protocol WeatherEstimateProtocol <NSObject>
+
+- (void) accurateAdded:(WeatherTableViewCell*)cell;
+- (void) unaccurateAdded:(WeatherTableViewCell*)cell;
 
 @end

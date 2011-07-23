@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeatherTableViewCell.h"
 
-@interface RootViewController : UITableViewController {
+@interface RootViewController : UITableViewController <WeatherEstimateProtocol>{
 
 }
 
