@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C307E35A13DA5D5F00C840D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C307E35913DA5D5F00C840D2 /* UIKit.framework */; };
+		C307E35C13DA5D5F00C840D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C307E35B13DA5D5F00C840D2 /* Foundation.framework */; };
+		C307E35E13DA5D5F00C840D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C307E35D13DA5D5F00C840D2 /* CoreGraphics.framework */; };
+		C307E36413DA5D5F00C840D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C307E36213DA5D5F00C840D2 /* InfoPlist.strings */; };
+		C307E36713DA5D5F00C840D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E36613DA5D5F00C840D2 /* main.m */; };
+		C307E36A13DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E36913DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m */; };
+		C307E36D13DA5D5F00C840D2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C307E36B13DA5D5F00C840D2 /* MainWindow.xib */; };
+		C307E37013DA5D5F00C840D2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E36F13DA5D5F00C840D2 /* RootViewController.m */; };
+		C307E37313DA5D5F00C840D2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C307E37113DA5D5F00C840D2 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C307E35513DA5D5F00C840D2 /* PeaceWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeaceWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C307E35913DA5D5F00C840D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C307E35B13DA5D5F00C840D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C307E35D13DA5D5F00C840D2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C307E36113DA5D5F00C840D2 /* PeaceWeather-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeaceWeather-Info.plist"; sourceTree = "<group>"; };
+		C307E36313DA5D5F00C840D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C307E36513DA5D5F00C840D2 /* PeaceWeather-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeaceWeather-Prefix.pch"; sourceTree = "<group>"; };
+		C307E36613DA5D5F00C840D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C307E36813DA5D5F00C840D2 /* PeaceWeatherAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeaceWeatherAppDelegate.h; sourceTree = "<group>"; };
+		C307E36913DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeaceWeatherAppDelegate.m; sourceTree = "<group>"; };
+		C307E36C13DA5D5F00C840D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C307E36E13DA5D5F00C840D2 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C307E36F13DA5D5F00C840D2 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C307E37213DA5D5F00C840D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C307E35213DA5D5F00C840D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C307E35A13DA5D5F00C840D2 /* UIKit.framework in Frameworks */,
+				C307E35C13DA5D5F00C840D2 /* Foundation.framework in Frameworks */,
+				C307E35E13DA5D5F00C840D2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C307E34A13DA5D5F00C840D2 = {
+			isa = PBXGroup;
+			children = (
+				C307E35F13DA5D5F00C840D2 /* PeaceWeather */,
+				C307E35813DA5D5F00C840D2 /* Frameworks */,
+				C307E35613DA5D5F00C840D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C307E35613DA5D5F00C840D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C307E35513DA5D5F00C840D2 /* PeaceWeather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C307E35813DA5D5F00C840D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C307E35913DA5D5F00C840D2 /* UIKit.framework */,
+				C307E35B13DA5D5F00C840D2 /* Foundation.framework */,
+				C307E35D13DA5D5F00C840D2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C307E35F13DA5D5F00C840D2 /* PeaceWeather */ = {
+			isa = PBXGroup;
+			children = (
+				C307E36813DA5D5F00C840D2 /* PeaceWeatherAppDelegate.h */,
+				C307E36913DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m */,
+				C307E36B13DA5D5F00C840D2 /* MainWindow.xib */,
+				C307E36E13DA5D5F00C840D2 /* RootViewController.h */,
+				C307E36F13DA5D5F00C840D2 /* RootViewController.m */,
+				C307E37113DA5D5F00C840D2 /* RootViewController.xib */,
+				C307E36013DA5D5F00C840D2 /* Supporting Files */,
+			);
+			path = PeaceWeather;
+			sourceTree = "<group>";
+		};
+		C307E36013DA5D5F00C840D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C307E36113DA5D5F00C840D2 /* PeaceWeather-Info.plist */,
+				C307E36213DA5D5F00C840D2 /* InfoPlist.strings */,
+				C307E36513DA5D5F00C840D2 /* PeaceWeather-Prefix.pch */,
+				C307E36613DA5D5F00C840D2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C307E35413DA5D5F00C840D2 /* PeaceWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C307E37613DA5D5F00C840D2 /* Build configuration list for PBXNativeTarget "PeaceWeather" */;
+			buildPhases = (
+				C307E35113DA5D5F00C840D2 /* Sources */,
+				C307E35213DA5D5F00C840D2 /* Frameworks */,
+				C307E35313DA5D5F00C840D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeaceWeather;
+			productName = PeaceWeather;
+			productReference = C307E35513DA5D5F00C840D2 /* PeaceWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C307E34C13DA5D5F00C840D2 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C307E34F13DA5D5F00C840D2 /* Build configuration list for PBXProject "PeaceWeather" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C307E34A13DA5D5F00C840D2;
+			productRefGroup = C307E35613DA5D5F00C840D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C307E35413DA5D5F00C840D2 /* PeaceWeather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C307E35313DA5D5F00C840D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C307E36413DA5D5F00C840D2 /* InfoPlist.strings in Resources */,
+				C307E36D13DA5D5F00C840D2 /* MainWindow.xib in Resources */,
+				C307E37313DA5D5F00C840D2 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C307E35113DA5D5F00C840D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C307E36713DA5D5F00C840D2 /* main.m in Sources */,
+				C307E36A13DA5D5F00C840D2 /* PeaceWeatherAppDelegate.m in Sources */,
+				C307E37013DA5D5F00C840D2 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C307E36213DA5D5F00C840D2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C307E36313DA5D5F00C840D2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C307E36B13DA5D5F00C840D2 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C307E36C13DA5D5F00C840D2 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		C307E37113DA5D5F00C840D2 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C307E37213DA5D5F00C840D2 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C307E37413DA5D5F00C840D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C307E37513DA5D5F00C840D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		C307E37713DA5D5F00C840D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeaceWeather/PeaceWeather-Prefix.pch";
+				INFOPLIST_FILE = "PeaceWeather/PeaceWeather-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C307E37813DA5D5F00C840D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeaceWeather/PeaceWeather-Prefix.pch";
+				INFOPLIST_FILE = "PeaceWeather/PeaceWeather-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C307E34F13DA5D5F00C840D2 /* Build configuration list for PBXProject "PeaceWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C307E37413DA5D5F00C840D2 /* Debug */,
+				C307E37513DA5D5F00C840D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C307E37613DA5D5F00C840D2 /* Build configuration list for PBXNativeTarget "PeaceWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C307E37713DA5D5F00C840D2 /* Debug */,
+				C307E37813DA5D5F00C840D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C307E34C13DA5D5F00C840D2 /* Project object */;
+}
