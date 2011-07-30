@@ -77,7 +77,8 @@ typedef enum _WeatherSource
     }
     if(indexPath.row == WeatherSourceGoogle)
     {
-        NSDictionary* dict = [weatherDict valueForKey:@"google"];//[weatherDict setValue:dict forKey:@"google"];
+        NSDictionary* googledict = [weatherDict valueForKey:@"google"];//[weatherDict setValue:dict forKey:@"google"];
+        NSDictionary* dict = [googledict valueForKey:@"today"];
         NSString* weatherInfo = nil;
         NSString* tempInfo = nil;
         if(dict==nil)
@@ -110,7 +111,8 @@ typedef enum _WeatherSource
     }
     else if(indexPath.row == WeatherSourceYahoo)
     {
-        NSDictionary* dict = [weatherDict valueForKey:@"yahoo"];
+        NSDictionary* yahoodict = [weatherDict valueForKey:@"yahoo"];
+        NSDictionary* dict = [yahoodict valueForKey:@"today"];
         NSString* weatherInfo = nil;
         NSString* tempInfo = nil;
         if(dict==nil)

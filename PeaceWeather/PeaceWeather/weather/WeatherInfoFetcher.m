@@ -150,6 +150,9 @@
          */
 //        NSDictionary* dict = [weather propertyListFromStringsFileFormat];
 //        NSLog(@"dict:%@",dict);
+        
+        //<<<取当日的天气预报
+        NSMutableDictionary* todayDayWeatherDict = [NSMutableDictionary dictionary];
         NSRange beginRange = [weather rangeOfString:@"<forecast_conditions>"];
         NSRange endRange = [weather rangeOfString:@"</forecast_conditions>"];
         NSString* todaySubString = [weather substringWithRange:NSMakeRange(beginRange.location+beginRange.length, endRange.location-(beginRange.location+beginRange.length))];
@@ -161,21 +164,104 @@
         beginRange = [lowDataSubString rangeOfString:@"\"/>"];
         NSString* lowData = [lowDataSubString substringToIndex:beginRange.location];
 //        NSLog(@"lowData:%@",lowData);
-        [weatherDict setValue:lowData forKey:@"lowTemp"];
+        [todayDayWeatherDict setValue:lowData forKey:@"lowTemp"];
         
         beginRange = [todaySubString rangeOfString:@"<high data=\""];
         NSString* highDataSubString = [todaySubString substringFromIndex:beginRange.location+beginRange.length];
         beginRange = [highDataSubString rangeOfString:@"\"/>"];
         NSString* highData = [highDataSubString substringToIndex:beginRange.location];
 //        NSLog(@"highData:%@",highData);
-        [weatherDict setValue:highData forKey:@"highTemp"];
+        [todayDayWeatherDict setValue:highData forKey:@"highTemp"];
         
         beginRange = [todaySubString rangeOfString:@"<condition data=\""];
         NSString* conditionSubString = [todaySubString substringFromIndex:beginRange.location+beginRange.length];
         beginRange = [conditionSubString rangeOfString:@"\"/>"];
         NSString* conditionData = [conditionSubString substringToIndex:beginRange.location];
 //        NSLog(@"conditionData:%@",conditionData);
-        [weatherDict setValue:conditionData forKey:@"condition"];
+        [todayDayWeatherDict setValue:conditionData forKey:@"condition"];
+        //取当日的天气预报>>>
+        
+
+        
+        //<<<取次日的天气预报
+        NSMutableDictionary* nextDayWeatherDict = [NSMutableDictionary dictionary];
+        NSString* nextDayWeatherString = [weather substringFromIndex:endRange.location+endRange.length];
+//        NSLog(@"nextDayWeatherString:%@",nextDayWeatherString);
+        beginRange = [nextDayWeatherString rangeOfString:@"<forecast_conditions>"];
+        endRange = [nextDayWeatherString rangeOfString:@"</forecast_conditions>"];
+        NSString* nextDaySubString = [nextDayWeatherString substringWithRange:NSMakeRange(beginRange.location+beginRange.length, endRange.location-(beginRange.location+beginRange.length))];
+//        NSLog(@"nextDaySubString:%@",nextDaySubString);
+        //<day_of_week data="周六"/><low data="25"/><high data="34"/><icon data="/ig/images/weather/sunny.gif"/><condition data="晴"/>
+        
+        beginRange = [nextDaySubString rangeOfString:@"<low data=\""];
+        lowDataSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [lowDataSubString rangeOfString:@"\"/>"];
+        lowData = [lowDataSubString substringToIndex:beginRange.location];
+//        NSLog(@"lowData:%@",lowData);
+        [nextDayWeatherDict setValue:lowData forKey:@"lowTemp"];
+        
+        beginRange = [nextDaySubString rangeOfString:@"<high data=\""];
+        highDataSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [highDataSubString rangeOfString:@"\"/>"];
+        highData = [highDataSubString substringToIndex:beginRange.location];
+//        NSLog(@"highData:%@",highData);
+        [nextDayWeatherDict setValue:highData forKey:@"highTemp"];
+        
+        beginRange = [nextDaySubString rangeOfString:@"<condition data=\""];
+        conditionSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [conditionSubString rangeOfString:@"\"/>"];
+        conditionData = [conditionSubString substringToIndex:beginRange.location];
+//        NSLog(@"conditionData:%@",conditionData);
+        [nextDayWeatherDict setValue:conditionData forKey:@"condition"];
+        //取次日的天气预报>>>
+        
+        //<<<取现在的天晴情况描述
+        NSMutableDictionary* currentWeatherDict = [NSMutableDictionary dictionary];
+        beginRange = [weather rangeOfString:@"<current_conditions>"];
+        endRange = [weather rangeOfString:@"</current_conditions>"];
+        NSString* currentConditionSubString = [weather substringWithRange:NSMakeRange(beginRange.location+beginRange.length, endRange.location-(beginRange.location+beginRange.length))];
+//        NSLog(@"currentConditionSubString:%@",currentConditionSubString);
+        //<day_of_week data="周六"/><low data="25"/><high data="34"/><icon data="/ig/images/weather/sunny.gif"/><condition data="晴"/>
+        
+        beginRange = [currentConditionSubString rangeOfString:@"<temp_c data=\""];
+        NSString* currentTemp = [currentConditionSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [currentTemp rangeOfString:@"\"/>"];
+        NSString* temp_c = [currentTemp substringToIndex:beginRange.location];
+//        NSLog(@"temp_c:%@",temp_c);
+        [currentWeatherDict setValue:temp_c forKey:@"temp_c"];
+        
+        beginRange = [currentConditionSubString rangeOfString:@"<humidity data=\""];
+        NSString* humidityString = [currentConditionSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [humidityString rangeOfString:@"\"/>"];
+        NSString* humidity = [humidityString substringToIndex:beginRange.location];
+//        NSLog(@"humidity:%@",humidity);
+        [currentWeatherDict setValue:humidity forKey:@"humidity"];
+        
+        beginRange = [currentConditionSubString rangeOfString:@"<condition data=\""];
+        conditionSubString = [currentConditionSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [conditionSubString rangeOfString:@"\"/>"];
+        conditionData = [conditionSubString substringToIndex:beginRange.location];
+//        NSLog(@"conditionData:%@",conditionData);
+        [currentWeatherDict setValue:conditionData forKey:@"condition"];
+        
+        beginRange = [currentConditionSubString rangeOfString:@"<wind_condition data=\""];
+        NSString* windSubString = [currentConditionSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [windSubString rangeOfString:@"\"/>"];
+        NSString* windCondition = [windSubString substringToIndex:beginRange.location];
+//        NSLog(@"conditionData:%@",windCondition);
+        [currentWeatherDict setValue:conditionData forKey:@"condition"];
+        
+        beginRange = [weather rangeOfString:@"<current_date_time data=\""];
+        NSString* dateString = [weather substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [dateString rangeOfString:@"\"/>"];
+        NSString* date = [dateString substringToIndex:beginRange.location];
+//        NSLog(@"date:%@",date);
+        [currentWeatherDict setValue:date forKey:@"date"];
+        //<current_date_time data="
+        //取现在的天晴情况描述>>>
+        [weatherDict setValue:todayDayWeatherDict forKey:@"today"];
+        [weatherDict setValue:nextDayWeatherDict forKey:@"nextday"];
+        [weatherDict setValue:currentWeatherDict forKey:@"currentWeatherDict"];
         
         if([delegate respondsToSelector:@selector(weatherFetchedSuccess:)])
         {
@@ -236,33 +322,99 @@
          api2.weather.sg1.yahoo.com compressed/chunked Fri Jul 22 23:22:35 PDT 2011
          -->
          */
-        
+        //<<<取今天的天气预报
+    
         NSRange beginRange = [weather rangeOfString:@"<yweather:forecast day="];
+        NSRange todayBeginRange = beginRange;
         NSString* todaySubString = [weather substringFromIndex:beginRange.location+beginRange.length];
         //"Sat" date="23 Jul 2011" low="26" high="33" text="Sunny" code="32"/>
 //        NSLog(@"todaySubString:%@",todaySubString);
         
+        NSMutableDictionary* todayDayWeatherDict = [NSMutableDictionary dictionary];
         beginRange = [todaySubString rangeOfString:@"low=\""];
         NSString* lowDataSubString = [todaySubString substringFromIndex:beginRange.location+beginRange.length];
         beginRange = [lowDataSubString rangeOfString:@"\""];
         NSString* lowData = [lowDataSubString substringToIndex:beginRange.location];
 //        NSLog(@"lowData:%@",lowData);
-        [weatherDict setValue:lowData forKey:@"lowTemp"];
+        [todayDayWeatherDict setValue:lowData forKey:@"lowTemp"];
         
         beginRange = [todaySubString rangeOfString:@"high=\""];
         NSString* highDataSubString = [todaySubString substringFromIndex:beginRange.location+beginRange.length];
         beginRange = [highDataSubString rangeOfString:@"\""];
         NSString* highData = [highDataSubString substringToIndex:beginRange.location];
 //        NSLog(@"highData:%@",highData);
-        [weatherDict setValue:highData forKey:@"highTemp"];
+        [todayDayWeatherDict setValue:highData forKey:@"highTemp"];
         
         beginRange = [todaySubString rangeOfString:@"text=\""];
         NSString* conditionSubString = [todaySubString substringFromIndex:beginRange.location+beginRange.length];
         beginRange = [conditionSubString rangeOfString:@"\""];
         NSString* conditionData = [conditionSubString substringToIndex:beginRange.location];
 //        NSLog(@"conditionData:%@",conditionData);
-        [weatherDict setValue:conditionData forKey:@"condition"];
+        [todayDayWeatherDict setValue:conditionData forKey:@"condition"];
+        //取今天的天气预报>>>
         
+        //<<<取明天的天气预报
+        NSMutableDictionary* nextDictionary = [NSMutableDictionary dictionary];
+        NSString* nextDayWeather = [weather  substringFromIndex:todayBeginRange.location+todayBeginRange.length];
+        beginRange = [nextDayWeather rangeOfString:@"<yweather:forecast day="];
+        NSString* nextDaySubString = [nextDayWeather substringFromIndex:beginRange.location+beginRange.length];
+        //"Sat" date="23 Jul 2011" low="26" high="33" text="Sunny" code="32"/>
+//        NSLog(@"nextDaySubString:%@",nextDaySubString);
+        
+        beginRange = [nextDaySubString rangeOfString:@"low=\""];
+        lowDataSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [lowDataSubString rangeOfString:@"\""];
+        lowData = [lowDataSubString substringToIndex:beginRange.location];
+//        NSLog(@"lowData:%@",lowData);
+        [nextDictionary setValue:lowData forKey:@"lowTemp"];
+        
+        beginRange = [nextDaySubString rangeOfString:@"high=\""];
+        highDataSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [highDataSubString rangeOfString:@"\""];
+        highData = [highDataSubString substringToIndex:beginRange.location];
+//        NSLog(@"highData:%@",highData);
+        [nextDictionary setValue:highData forKey:@"highTemp"];
+        
+        beginRange = [nextDaySubString rangeOfString:@"text=\""];
+        conditionSubString = [nextDaySubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [conditionSubString rangeOfString:@"\""];
+        conditionData = [conditionSubString substringToIndex:beginRange.location];
+//        NSLog(@"conditionData:%@",conditionData);
+        [nextDictionary setValue:conditionData forKey:@"condition"];
+        //取明天的天气预报>>>
+        
+        //<<<获取现在的天气情况
+        NSMutableDictionary* currentConditionDictionary = [NSMutableDictionary dictionary];
+        beginRange = [weather rangeOfString:@"<yweather:condition"];
+        NSString* currentSubString = [weather substringFromIndex:beginRange.location+beginRange.length];
+        //"Sat" date="23 Jul 2011" low="26" high="33" text="Sunny" code="32"/>
+//        NSLog(@"currentSubString:%@",currentSubString);
+        
+        beginRange = [currentSubString rangeOfString:@"temp=\""];
+        NSString* tempString = [currentSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [tempString rangeOfString:@"\""];
+        NSString* temp = [tempString substringToIndex:beginRange.location];
+//        NSLog(@"temp:%@",temp);
+        [currentConditionDictionary setValue:temp forKey:@"temp"];
+        
+        beginRange = [currentSubString rangeOfString:@"date=\""];
+        NSString* dateString = [currentSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [dateString rangeOfString:@"\""];
+        NSString* date = [dateString substringToIndex:beginRange.location];
+//        NSLog(@"date:%@",date);
+        [currentConditionDictionary setValue:date forKey:@"date"];
+        
+        beginRange = [currentSubString rangeOfString:@"text=\""];
+        conditionSubString = [currentSubString substringFromIndex:beginRange.location+beginRange.length];
+        beginRange = [conditionSubString rangeOfString:@"\""];
+        conditionData = [conditionSubString substringToIndex:beginRange.location];
+//        NSLog(@"conditionData:%@",conditionData);
+        [currentConditionDictionary setValue:conditionData forKey:@"condition"];
+        //获取现在的天气情况>>>
+        
+        [weatherDict setValue:todayDayWeatherDict forKey:@"today"];
+        [weatherDict setValue:nextDictionary forKey:@"nextday"];
+        [weatherDict setValue:currentConditionDictionary forKey:@"currentWeatherDict"];
         if([delegate respondsToSelector:@selector(weatherFetchedSuccess:)])
         {
             [delegate weatherFetchedSuccess:weatherDict];
