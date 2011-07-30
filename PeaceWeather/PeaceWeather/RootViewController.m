@@ -276,14 +276,14 @@ typedef enum _WeatherSource
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     if(indexPath.row==WeatherSourceGoogle)
     {
-        NSLog(@"accurate google");
+//        NSLog(@"accurate google");
         NSUInteger googleCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"googlecount"];
         googleCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:googleCount forKey:@"googlecount"];
     }
     else if(indexPath.row == WeatherSourceYahoo)
     {
-        NSLog(@"accurate yahoo");
+//        NSLog(@"accurate yahoo");
         NSUInteger yahooCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"yahooCount"];
         yahooCount++;
         [[NSUserDefaults standardUserDefaults] setInteger:yahooCount forKey:@"yahooCount"];
@@ -295,11 +295,11 @@ typedef enum _WeatherSource
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
     if(indexPath.row==WeatherSourceGoogle)
     {
-        NSLog(@"unaccurate google");
+//        NSLog(@"unaccurate google");
     }
     else if(indexPath.row == WeatherSourceYahoo)
     {
-          NSLog(@"unaccurate yahoo");
+//          NSLog(@"unaccurate yahoo");
     }
 }
 
