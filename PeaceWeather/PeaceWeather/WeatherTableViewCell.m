@@ -20,7 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
+//        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(2, 7, 30, 30)];
         iv.tag = ktemperatureImageViewTag; 

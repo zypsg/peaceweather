@@ -228,7 +228,7 @@
         beginRange = [currentTemp rangeOfString:@"\"/>"];
         NSString* temp_c = [currentTemp substringToIndex:beginRange.location];
 //        NSLog(@"temp_c:%@",temp_c);
-        [currentWeatherDict setValue:temp_c forKey:@"temp_c"];
+        [currentWeatherDict setValue:temp_c forKey:@"temp"];
         
         beginRange = [currentConditionSubString rangeOfString:@"<humidity data=\""];
         NSString* humidityString = [currentConditionSubString substringFromIndex:beginRange.location+beginRange.length];

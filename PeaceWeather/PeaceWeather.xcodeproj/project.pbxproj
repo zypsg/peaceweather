@@ -21,6 +21,7 @@
 		C307E38013DA70A100C840D2 /* yahoo.png in Resources */ = {isa = PBXBuildFile; fileRef = C307E37E13DA70A100C840D2 /* yahoo.png */; };
 		C307E38613DA7CDD00C840D2 /* PeaceHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E38513DA7CDD00C840D2 /* PeaceHttpTool.m */; };
 		C307E38913DA962000C840D2 /* WeatherInfoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */; };
+		C3FEDFC713E3B0870015A539 /* WeatherDetainInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FEDFC613E3B0870015A539 /* WeatherDetainInfoController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		C307E38513DA7CDD00C840D2 /* PeaceHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeaceHttpTool.m; sourceTree = "<group>"; };
 		C307E38713DA962000C840D2 /* WeatherInfoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherInfoFetcher.h; sourceTree = "<group>"; };
 		C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherInfoFetcher.m; sourceTree = "<group>"; };
+		C3FEDFC513E3B0870015A539 /* WeatherDetainInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDetainInfoController.h; path = PeaceWeather/WeatherDetainInfoController.h; sourceTree = SOURCE_ROOT; };
+		C3FEDFC613E3B0870015A539 /* WeatherDetainInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDetainInfoController.m; path = PeaceWeather/WeatherDetainInfoController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 			children = (
 				C307E38713DA962000C840D2 /* WeatherInfoFetcher.h */,
 				C307E38813DA962000C840D2 /* WeatherInfoFetcher.m */,
+				C3FEDFC513E3B0870015A539 /* WeatherDetainInfoController.h */,
+				C3FEDFC613E3B0870015A539 /* WeatherDetainInfoController.m */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				C307E37B13DA603F00C840D2 /* WeatherTableViewCell.m in Sources */,
 				C307E38613DA7CDD00C840D2 /* PeaceHttpTool.m in Sources */,
 				C307E38913DA962000C840D2 /* WeatherInfoFetcher.m in Sources */,
+				C3FEDFC713E3B0870015A539 /* WeatherDetainInfoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +334,7 @@
 				C307E37813DA5D5F00C840D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

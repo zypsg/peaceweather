@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "WeatherDetainInfoController.h"
 
 typedef enum _WeatherSource
 {
@@ -196,7 +196,52 @@ typedef enum _WeatherSource
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 	*/
+    NSDictionary* dict = nil;
+    if(indexPath.row == WeatherSourceYahoo)
+    {
+        dict = [weatherDict valueForKey:@"yahoo"];
+    }
+    else if(indexPath.row == WeatherSourceGoogle)
+    {
+        dict = [weatherDict valueForKey:@"google"];
+    }
+    WeatherDetainInfoController* wdic = [[WeatherDetainInfoController alloc] initWithWeatherDict:dict];
+    if(indexPath.row == WeatherSourceYahoo)
+    {
+        wdic.title = @"Yahoo! Weather";
+    }
+    else if(indexPath.row == WeatherSourceGoogle)
+    {
+        wdic.title = @"Google Weather";
+    }
+    [self.navigationController pushViewController:wdic animated:YES];
+    [wdic release];
 }
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL ret = NO;
+    if(indexPath.row == WeatherSourceYahoo)
+    {
+        if([weatherDict valueForKey:@"yahoo"])
+        {
+            ret = YES;
+        }
+    }
+    else if(indexPath.row == WeatherSourceGoogle)
+    {
+        if([weatherDict valueForKey:@"google"])
+        {
+            ret = YES;
+        }
+    }
+    if(ret)
+    {
+        return indexPath;
+    }
+    else
+        return nil;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -266,6 +311,7 @@ typedef enum _WeatherSource
     NSNumber* stepNum = [dict valueForKey:@"step"];
     WeatherFetchStep step = [stepNum intValue];
     NSDictionary* tempDict = [NSDictionary dictionaryWithDictionary:dict];
+//    NSLog(@"tempDict:%@",tempDict);
     if(step == WeatherFetchStepGoogle)
     {
         [weatherDict setValue:tempDict forKey:@"google"];
